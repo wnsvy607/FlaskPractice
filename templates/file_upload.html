@@ -1,46 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
 </head>
-<body>
-  <div id="app">
-      <form method="post" enctype="multipart/form-data">
-        <div>
-          <label for="chooseFile">
-            Click
-          </label>
-        </div>
-      <input ref="image" @change="uploadImg()" type="file" id="chooseFile" name="chooseFile" accept="image/*">
-      </form>
-      <img :src="image" alt="">
-  </div>
 
+<body>
+  <form action="http://localhost:9999/file_upload" method="POST" enctype="multipart/form-data">
+    <input type="file" name="file" />
+    <input type="submit" />
+  </form>
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
   <script>
-    new Vue({
-      el: '#app',
-      data: {
-        image: ''
-      },
-      methods: {
-        uploadImg() {
-          console.log('들어왔다.');
-          var image = this.$refs['image'].files[0]
-
-          const url = URL.createObjectURL(image)
-          this.image = url
-          console.log(url);
-          console.log(this.image);
-        }
-      }
-    })
   </script>
-  
 </body>
+
 </html>
